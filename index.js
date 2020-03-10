@@ -1,15 +1,13 @@
-/**
- * @author: B Sama
- */
-
-// import {AppRegistry} from 'react-native';
-// import App from './App';
-// import {name as appName} from './app.json';
-
+import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import {
-    View, AppRegistry, Text, StyleSheet, Image, Button
+    AppRegistry
 } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeMain from './src/screen/Home/main/HomeMain';
+
+const Stack = createStackNavigator();
 
 class OrangeJuice extends Component {
     constructor(props) {
@@ -17,27 +15,13 @@ class OrangeJuice extends Component {
     }
     render() {
         return (
-            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-           </View>
-
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name="HomeMain" component={HomeMain} />
+                </Stack.Navigator>
+            </NavigationContainer>
         );
     }
 }
-
-var ss = StyleSheet.create({
-    title: {
-        fontWeight: "500",
-        fontSize: 40,
-        color: 'orange'
-    },
-    descrip: {
-        fontSize: 20,
-        color: "green"
-    },
-    logo: {
-        width: 200,
-        height: 200
-    },
-});
 
 AppRegistry.registerComponent('OrangeJuice', () => OrangeJuice);
