@@ -18,14 +18,7 @@ class OrangeJuice extends Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                <View >
-                    <Image style={ss.logo} source={require('/Users/trung/OrangeJuice/logo.png')}></Image>
-                </View>
-                <Text style={ss.title}>ORANGE JUICE</Text>
-                <Text style={ss.descrip}>
-                    Play, Learn & Grow together!
-                </Text>
-            </View>
+           </View>
 
         );
     }
