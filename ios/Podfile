@@ -34,6 +34,9 @@ target 'OrangeJuice' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Storage', '~> 6.13.0'
+  pod 'Firebase/Auth', '~> 6.13.0'
+  pod 'Firebase/Database', '~> 6.13.0'
   
   target 'OrangeJuiceTests' do
     inherit! :search_paths
