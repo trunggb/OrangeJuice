@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "763195811246",
+    "firebase_url": "https://orange-juice-v1.firebaseio.com",
+    "project_id": "orange-juice-v1",
+    "storage_bucket": "orange-juice-v1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763195811246:android:a15ffc01e170fbd869143f",
+        "android_client_info": {
+          "package_name": "com.orangejuice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763195811246-7v8djlde84nl60ij6pgamf89ts54k25e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3rhy5csjSWRzyIajHpMnKyazX15G3WDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763195811246-7v8djlde84nl60ij6pgamf89ts54k25e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "763195811246-bqph85okrhjudgrlv9kvvn8m1613jak5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "juice.orange.v1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
