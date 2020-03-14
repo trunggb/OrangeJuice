@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Dimensions, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Text, Image, Button } from 'react-native-elements';
+import logo from './logo.png';
 
-const widthScreen = Dimensions.get('window').width;
 
 class WelcomeScreen extends React.Component {
     onPressGoBtn = () => {
@@ -12,7 +12,7 @@ class WelcomeScreen extends React.Component {
         return (
             <View style={styles.container} >
                 <View style={styles.imgContainer}>
-                    <Image source={require('./logo.png')}
+                    <Image source={logo}
                         style={styles.logo}>
 
                     </Image>
@@ -35,11 +35,9 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 50,
         flex: 1,
-        flexDirection: "column",
         justifyContent: "space-around",
         alignContent: "center",
         backgroundColor: "white",
-        flexDirection: "column",
         backgroundColor: "white",
         paddingBottom: 100,
     },
