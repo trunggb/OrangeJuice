@@ -14,6 +14,7 @@ import HomeMain from "./src/screen/Home/main/HomeMain";
 import Welcome from "./src/screen/Welcome/main/Welcome";
 import DashBoard from "./src/screen/DashBoard/main/DashBoard";
 import Login from "./src/screen/Login/main/Login";
+import Register from "./src/screen/Register/main/Register";
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ class OrangeJuice extends Component {
                     <Stack.Screen name="Welcome" component={Welcome} />
                     <Stack.Screen name="DashBoard" component={DashBoard} />
                     <Stack.Screen name="Login" component={Login} />
+                    <Stack.Screen name="Register" component={Register} />
                 </Stack.Navigator>
             </NavigationContainer>
         );
