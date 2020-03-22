@@ -12,6 +12,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeMain from "./src/screen/Home/main/HomeMain";
 import Welcome from "./src/screen/Welcome/main/Welcome";
+import DashBoard from "./src/screen/DashBoard/main/DashBoard";
+import Login from "./src/screen/Login/main/Login";
 
 const Stack = createStackNavigator();
 
@@ -26,6 +28,8 @@ class OrangeJuice extends Component {
                 <Stack.Navigator initialRouteName="Welcome">
                     <Stack.Screen name="HomeMain" component={HomeMain} />
                     <Stack.Screen name="Welcome" component={Welcome} />
+                    <Stack.Screen name="DashBoard" component={DashBoard} />
+                    <Stack.Screen name="Login" component={Login} />
                 </Stack.Navigator>
             </NavigationContainer>
         );
