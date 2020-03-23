@@ -3,11 +3,22 @@ import { StyleSheet, ImageBackground, TextInput, View, TouchableOpacity, Image }
 import wall from './register-screen-wall.png';
 import loginBtn from './login-btn.png';
 import registerBtn from './register-btn.png';
+import firebase from 'react-native-firebase'
 
 
 class Register extends React.Component {
+    state = { fullName: '', email: '', phone: '', password: '', confirmPassword: '', errorMessage: null }
+
+    handleSignUp = () => {
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .then(() => this.props.navigation.navigate('DashBoard'))
+            .catch(error => this.setState({ errorMessage: error.message }))
+    }
+
     onPressLoginBtn = () => {
-        this.props.navigation.navigate("DashBoard");
+        this.props.navigation.navigate("Login");
     };
 
 
@@ -16,29 +27,46 @@ class Register extends React.Component {
             <ImageBackground source={wall} style={styles.backgroundImage}>
                 <View style={styles.loginContainer}>
                     <TextInput
-                        style={styles.emailInput}
-                        onChangeText={text => onChangeText(text)}
+                        autoCapitalize='none'
+                        placeholder='Full name'
+                        style={styles.fullNameInput}
+                        onChangeText={fullName => this.setState({ fullName })}
+                        value={this.state.fullName}
                     />
                     <TextInput
-                        style={styles.passwordInput}
-                        onChangeText={text => onChangeText(text)}
+                        autoCapitalize='none'
+                        placeholder='Email address'
+                        style={styles.userInputText}
+                        onChangeText={email => this.setState({ email })}
+                        value={this.state.email}
                     />
 
                     <TextInput
-                        style={styles.passwordInput}
-                        onChangeText={text => onChangeText(text)}
+                        autoCapitalize='none'
+                        placeholder='Phone number'
+                        style={styles.userInputText}
+                        onChangeText={phone => this.setState({ phone })}
+                        value={this.state.phone}
                     />
                     <TextInput
-                        style={styles.passwordInput}
-                        onChangeText={text => onChangeText(text)}
+                        autoCapitalize='none'
+                        secureTextEntry
+                        placeholder='Password'
+                        style={styles.userInputText}
+                        onChangeText={password => this.setState({ password })}
+                        value={this.state.password}
                     />
                     <TextInput
-                        style={styles.passwordInput}
-                        onChangeText={text => onChangeText(text)}
+                        autoCapitalize='none'
+                        secureTextEntry
+                        placeholder='Confirm password'
+                        style={styles.userInputText}
+                        onChangeText={confirmPassword => this.setState({ confirmPassword })}
+                        value={this.state.confirmPassword}
                     />
                     <View style={styles.flexContainer}>
-                    
-                        <TouchableOpacity style={styles.loginIcon} activeOpacity={0.5}>
+
+                        <TouchableOpacity style={styles.loginIcon} activeOpacity={0.5} onPress={this.handleSignUp}>
                             <Image
                                 source={registerBtn}
                                 style={styles.loginIconStyle}
@@ -63,7 +91,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    emailInput: {
+    fullNameInput: {
         marginTop: 200,
         height: 50,
         borderColor: '#F59549',
@@ -71,7 +99,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         borderRadius: 30,
     },
-    passwordInput: {
+    userInputText: {
         marginTop: 15,
         height: 50,
         borderColor: '#F59549',

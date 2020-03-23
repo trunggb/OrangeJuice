@@ -6,12 +6,19 @@ import registerBtn from './register-btn.png';
 import facebook from './facebook.png';
 import google from './google.png';
 import twitter from './twitter.png';
+import firebase from 'react-native-firebase'
 
 
 class Login extends React.Component {
-    onPressLoginBtn = () => {
-        this.props.navigation.navigate("DashBoard");
-    };
+    state = { email: '', password: '', errorMessage: null }
+    handleLogin = () => {
+        const { email, password } = this.state
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(() => this.props.navigation.navigate('DashBoard'))
+            .catch(error => this.setState({ errorMessage: error.message }))
+    }
     onPressRegisterBtn = () => {
         this.props.navigation.navigate("Register");
     };
@@ -22,15 +29,22 @@ class Login extends React.Component {
             <ImageBackground source={wall} style={styles.backgroundImage}>
                 <View style={styles.loginContainer}>
                     <TextInput
+                        autoCapitalize='none'
+                        placeholder="Email"
                         style={styles.emailInput}
-                        onChangeText={text => onChangeText(text)}
+                        onChangeText={email => this.setState({ email })}
+                        value={this.state.email}
                     />
                     <TextInput
+                        autoCapitalize='none'
+                        secureTextEntry
+                        placeholder="Password"
                         style={styles.passwordInput}
-                        onChangeText={text => onChangeText(text)}
+                        onChangeText={password => this.setState({ password })}
+                        value={this.state.password}
                     />
                     <View style={styles.flexContainer}>
-                        <TouchableOpacity style={styles.loginIcon} activeOpacity={0.5} onPress={this.onPressLoginBtn}>
+                        <TouchableOpacity style={styles.loginIcon} activeOpacity={0.5} onPress={this.handleLogin}>
                             <Image
                                 source={loginBtn}
                                 style={styles.loginIconStyle}
@@ -100,24 +114,24 @@ const styles = StyleSheet.create({
         width: 90,
         height: 50,
     },
-    flexContainer:{
-        flexDirection:"row",
+    flexContainer: {
+        flexDirection: "row",
         justifyContent: "center",
-        paddingTop:20,
+        paddingTop: 20,
     },
-    socialIconStyle:{
+    socialIconStyle: {
         width: 50,
         height: 50,
     },
-    socialIcon:{
+    socialIcon: {
         paddingRight: 10,
         paddingLeft: 10,
     },
     socialContainer: {
-        flexDirection:"row",
+        flexDirection: "row",
         justifyContent: "center",
-        paddingTop:20,
-        marginTop:60,
+        paddingTop: 20,
+        marginTop: 60,
     }
 
 });
