@@ -1,72 +1,26 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Text, Image, Button } from 'react-native-elements';
-import logo from './logo.png';
-
-
+import { StyleSheet, ImageBackground } from 'react-native';
+import wall from './wellcome-screen-wall.png';
+import firebase from 'react-native-firebase'
 class WelcomeScreen extends React.Component {
-    onPressGoBtn = () => {
-        this.props.navigation.navigate("HomeMain");
-    };
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged(user => {
+            this.props.navigation.navigate(user ? 'DashBoard' : 'Login')
+        })
+    }
     render() {
         return (
-            <View style={styles.container} >
-                <View style={styles.imgContainer}>
-                    <Image source={logo}
-                        style={styles.logo}>
-
-                    </Image>
-                </View>
-                <View style={styles.textContainer}>
-                    <View>
-                        <Text h3 style={styles.welcomeTitle}>ORANGE JUICE</Text>
-                        <Text style={styles.welcomeSlogan} >Play, Learn & Grow together!</Text>
-                    </View>
-                </View>
-                <View style={styles.btnContainer}>
-                    <Button title="Go" onPress={this.onPressGoBtn} style={styles.goBtn}/>
-                </View>
-            </View>
+            <ImageBackground source={wall} style={styles.backgroundImage}>
+            </ImageBackground>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: 50,
-        flex: 1,
-        justifyContent: "space-around",
-        alignContent: "center",
-        backgroundColor: "white",
-        backgroundColor: "white",
-        paddingBottom: 100,
+    backgroundImage: {
+        width: '100%',
+        height: '100%',
     },
-    welcomeTitle: {
-        color: "orange"
-    },
-    textContainer: {
-        flexDirection: "row",
-        justifyContent: "center",
-    },
-    welcomeSlogan: {
-        fontSize: 18,
-        color:"green",
-    },
-    logo: {
-        width: 200,
-        height: 200
-    },
-    imgContainer: {
-        justifyContent: "center",
-        flexDirection: "row",
-    },
-    btnContainer: {
-        flexDirection:"row",
-        justifyContent: "center",
-    },
-    goBtn:{
-        width: 100,
-    }
 });
 
 
