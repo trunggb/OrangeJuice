@@ -10,9 +10,16 @@ class Register extends React.Component {
     state = { fullName: '', email: '', phone: '', password: '', confirmPassword: '', errorMessage: null }
 
     handleSignUp = () => {
+        
         firebase
             .auth()
             .createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .then((result) => {
+                return result.user.updateProfile({
+                    displayName: this.state.fullName,
+                    phoneNumber: this.state.phone,
+                })
+            })
             .then(() => this.props.navigation.navigate('DashBoard'))
             .catch(error => this.setState({ errorMessage: error.message }))
     }
@@ -28,14 +35,14 @@ class Register extends React.Component {
                 <View style={styles.loginContainer}>
                     <TextInput
                         autoCapitalize='none'
-                        placeholder='Full name'
+                        placeholder='   Full name'
                         style={styles.fullNameInput}
                         onChangeText={fullName => this.setState({ fullName })}
                         value={this.state.fullName}
                     />
                     <TextInput
                         autoCapitalize='none'
-                        placeholder='Email address'
+                        placeholder='   Email address'
                         style={styles.userInputText}
                         onChangeText={email => this.setState({ email })}
                         value={this.state.email}
@@ -43,7 +50,7 @@ class Register extends React.Component {
 
                     <TextInput
                         autoCapitalize='none'
-                        placeholder='Phone number'
+                        placeholder='   Phone number'
                         style={styles.userInputText}
                         onChangeText={phone => this.setState({ phone })}
                         value={this.state.phone}
@@ -51,7 +58,7 @@ class Register extends React.Component {
                     <TextInput
                         autoCapitalize='none'
                         secureTextEntry
-                        placeholder='Password'
+                        placeholder='   Password'
                         style={styles.userInputText}
                         onChangeText={password => this.setState({ password })}
                         value={this.state.password}
@@ -59,7 +66,7 @@ class Register extends React.Component {
                     <TextInput
                         autoCapitalize='none'
                         secureTextEntry
-                        placeholder='Confirm password'
+                        placeholder='   Confirm password'
                         style={styles.userInputText}
                         onChangeText={confirmPassword => this.setState({ confirmPassword })}
                         value={this.state.confirmPassword}
@@ -92,7 +99,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     fullNameInput: {
-        marginTop: 200,
+        marginTop: 230,
         height: 50,
         borderColor: '#F59549',
         borderWidth: 5,

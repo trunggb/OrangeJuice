@@ -30,7 +30,7 @@ class Login extends React.Component {
                 <View style={styles.loginContainer}>
                     <TextInput
                         autoCapitalize='none'
-                        placeholder="Email"
+                        placeholder='   Email'
                         style={styles.emailInput}
                         onChangeText={email => this.setState({ email })}
                         value={this.state.email}
@@ -38,7 +38,7 @@ class Login extends React.Component {
                     <TextInput
                         autoCapitalize='none'
                         secureTextEntry
-                        placeholder="Password"
+                        placeholder="   Password"
                         style={styles.passwordInput}
                         onChangeText={password => this.setState({ password })}
                         value={this.state.password}
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     emailInput: {
-        marginTop: 300,
+        marginTop: 330,
         height: 50,
         borderColor: '#F59549',
         borderWidth: 5,
